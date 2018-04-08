@@ -9,12 +9,12 @@
 !/.gitignore.d/blender
 
 !/.config/blender
-!/.config/blender/2.79
-!/.config/blender/2.79/config
-!/.config/blender/2.79/config/*.blend
-!/.config/blender/2.79/scripts
-!/.config/blender/2.79/scripts/addons
-!/.config/blender/2.79/scripts/addons/*.py
+!/.config/blender/*
+!/.config/blender/*/config
+!/.config/blender/*/config/*.blend
+!/.config/blender/*/scripts
+!/.config/blender/*/scripts/addons
+!/.config/blender/*/scripts/addons/*.py
 
 !/bin
 !/bin/,setup-blender
