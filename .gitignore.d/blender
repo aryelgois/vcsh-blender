@@ -8,5 +8,10 @@
 !/.gitignore.d
 !/.gitignore.d/blender
 
+!/.config/blender
+!/.config/blender/2.79
+!/.config/blender/2.79/config
+!/.config/blender/2.79/config/*.blend
+
 !/bin
 !/bin/,setup-blender
