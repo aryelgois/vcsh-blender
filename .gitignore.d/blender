@@ -7,3 +7,6 @@
 !/.config/mr/config.d/blender.vcsh
 !/.gitignore.d
 !/.gitignore.d/blender
+
+!/bin
+!/bin/,setup-blender

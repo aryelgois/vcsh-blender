@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+# Semi-automatic Blender installation
+#   PREFIX Path to where to install (default: ~/.local)
+
+set -e
+
+PREFIX=${PREFIX:-'~/.local'}
+
+DIR_INSTALL="$PREFIX/lib/blender"
+DIR_APP="$PREFIX/share/applications"
+DIR_BIN="$PREFIX/bin"
+DIR_THUMB="$PREFIX/share/thumbnailers"
+
+echo 'Download the latest release from https://www.blender.org/download/'
+echo 'Then enter the path to the .tar.bz2 file:'
+read -e -p '> ' BLENDER_PACK
+echo
+
+echo 'Creating directories'
+mkdir -p "$DIR_INSTALL" "$DIR_BIN" "$DIR_APP" "$DIR_THUMB"
+
+echo 'Removing previous files'
+rm -rf "$DIR_INSTALL/*"
+rm -f \
+    "$DIR_APP/blender.desktop" \
+    "$DIR_BIN/blender" \
+    "$DIR_BIN/blenderplayer" \
+    "$DIR_BIN/blender-thumbnailer" \
+    "$DIR_THUMB/blender-thumbnailer"
+
+
+echo "Unpacking in $DIR_INSTALL/"
+tar jxf "$BLENDER_PACK" -C "$DIR_INSTALL" --strip-components 1
+
+echo 'Preparing application file'
+sed -i "/^Exec=/ s:blender:$DIR_INSTALL/blender:
+    /^Icon=/ s:blender:$DIR_INSTALL/blender.svg:" "$DIR_INSTALL/blender.desktop"
+
+echo 'Creating links'
+ln -s '../../lib/blender/blender.desktop'     "$DIR_APP/"
+ln -s '../lib/blender/blender'                "$DIR_BIN/"
+ln -s '../lib/blender/blenderplayer'          "$DIR_BIN/"
+ln -s '../lib/blender/blender-thumbnailer.py' "$DIR_BIN/blender-thumbnailer"
+
+echo 'Configuring thumbnailer'
+cat <<EOF > "$DIR_THUMB/blender-thumbnailer"
+[Thumbnailer Entry]
+TryExec=blender-thumbnailer
+Exec=blender-thumbnailer %u %o
+MimeType=application/x-blender;
+EOF
+
+echo 'Done!'
