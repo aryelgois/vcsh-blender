@@ -50,4 +50,8 @@ Exec=blender-thumbnailer %u %o
 MimeType=application/x-blender;
 EOF
 
+echo 'Creating user directories'
+mkdir -p "$HOME"/Blender/{assets/{audio,textures},output,projects,scripts} \
+    "$HOME"/.cache/blender/{tmp,cache}
+
 echo 'Done!'
