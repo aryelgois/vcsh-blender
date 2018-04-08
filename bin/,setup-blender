@@ -33,6 +33,7 @@ echo "Unpacking in $DIR_INSTALL/"
 tar jxf "$BLENDER_PACK" -C "$DIR_INSTALL" --strip-components 1
 
 echo 'Preparing application file'
+chmod +x "$DIR_INSTALL/blender.desktop"
 sed -i "/^Exec=/ s:blender:$DIR_INSTALL/blender:
     /^Icon=/ s:blender:$DIR_INSTALL/blender.svg:" "$DIR_INSTALL/blender.desktop"
 
