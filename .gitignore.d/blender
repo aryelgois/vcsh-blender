@@ -1,0 +1,9 @@
+*
+!/.config
+!/.config/mr
+!/.config/mr/available.d
+!/.config/mr/available.d/blender.vcsh
+!/.config/mr/config.d
+!/.config/mr/config.d/blender.vcsh
+!/.gitignore.d
+!/.gitignore.d/blender
