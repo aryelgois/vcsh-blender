@@ -12,6 +12,13 @@
 !/.config/blender/2.79
 !/.config/blender/2.79/config
 !/.config/blender/2.79/config/*.blend
+!/.config/blender/2.79/scripts
+!/.config/blender/2.79/scripts/addons
+!/.config/blender/2.79/scripts/addons/*.py
 
 !/bin
 !/bin/,setup-blender
+
+!/Blender
+!/Blender/scripts
+!/Blender/scripts/*
